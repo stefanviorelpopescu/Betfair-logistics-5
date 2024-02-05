@@ -1,8 +1,10 @@
 package org.betfair.logistics.dao.entity;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.betfair.logistics.dao.OrderStatus;
 import org.hibernate.annotations.GenericGenerator;
 
@@ -12,6 +14,8 @@ import java.util.UUID;
 @Table(name = "orders")
 @Data
 @Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class Order {
 
     @Id
