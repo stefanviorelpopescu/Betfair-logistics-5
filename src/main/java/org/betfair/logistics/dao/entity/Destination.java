@@ -1,5 +1,6 @@
 package org.betfair.logistics.dao.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -26,6 +27,7 @@ public class Destination {
     @Column(nullable = false)
     private Integer distance;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "destination")
     List<Order> orders;
 

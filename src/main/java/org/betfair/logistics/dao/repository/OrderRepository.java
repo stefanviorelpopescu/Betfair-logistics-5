@@ -11,6 +11,6 @@ import java.util.List;
 public interface OrderRepository extends JpaRepository<Order, Long> {
 
     List<Order> findAllByDestination(Destination destination);
-    List<Order> findAllByDestination_Id(Long destinationId);
+    List<Order> findAllByDeliveryDateAndDestination_NameContainingIgnoreCase(Long deliveryDate, String destinationName);
 
 }

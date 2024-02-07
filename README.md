@@ -37,10 +37,10 @@ O livrare anulata nu va aduce profit. O livrare finalizata nu mai
 poate fi anulata.
 
 ### GET /orders/status?date=15-12-2021&destination=Ploiesti
-Returneaza lista de livrari din ziua si pentru destinatia date ca si parametru.  
-Daca parametrul date nu este furnizat, se vor intoarce date despre livrarile din ziua curenta a
+* Returneaza lista de livrari din ziua si pentru destinatia date ca si parametru.  
+* Daca parametrul date nu este furnizat, se vor intoarce date despre livrarile din ziua curenta a
 aplicatiei.  
-Daca parametrul destination nu este furnizat, se vor intoarce date despre livrarile catre toate
+* Daca parametrul destination nu este furnizat, se vor intoarce date despre livrarile catre toate
 destinatiile.
 
 ### GET /actuator/info

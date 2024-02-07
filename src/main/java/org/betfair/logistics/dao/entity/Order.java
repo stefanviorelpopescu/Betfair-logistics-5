@@ -6,9 +6,6 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.betfair.logistics.dao.OrderStatus;
-import org.hibernate.annotations.GenericGenerator;
-
-import java.util.UUID;
 
 @Entity
 @Table(name = "orders")
@@ -31,5 +28,5 @@ public class Order {
 
     @ManyToOne
     @JoinColumn(name = "destination_id")
-    Destination destination;
+    private Destination destination;
 }
