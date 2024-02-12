@@ -1,11 +1,11 @@
 package org.betfair.logistics;
 
-import org.betfair.logistics.service.OrderService;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.ConfigurableApplicationContext;
+import org.springframework.scheduling.annotation.EnableAsync;
 
 @SpringBootApplication
+@EnableAsync
 public class LogisticsApplication {
 
 	public static void main(String[] args) {

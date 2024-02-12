@@ -56,9 +56,7 @@ public class OrderService {
     }
 
     public void cancelOrders(List<Long> orderIds) {
-        List<Order> foundOrders = orderRepository.findAllById(orderIds);
-        foundOrders.forEach(this::cancelOrder);
-        orderRepository.saveAll(foundOrders);
+        orderRepository.changeStatusForOrders(orderIds, OrderStatus.CANCELED);
     }
 
     private void validateOrderDtosForAdd(List<OrderDto> orderDtos, Set<Long> existingDestinationIds) throws CannotCreateResourceException {
@@ -82,7 +80,6 @@ public class OrderService {
     }
 
     private Order buildOrderFromDto(OrderDto orderDto, Map<Long, Destination> destinationsById) {
-
         return Order.builder()
                 .status(OrderStatus.NEW)
                 .lastUpdated(System.currentTimeMillis())
@@ -91,10 +88,4 @@ public class OrderService {
                 .build();
     }
 
-    private void cancelOrder(Order order) {
-        if (order.getStatus() == OrderStatus.DELIVERED || order.getStatus() == OrderStatus.INVALID) {
-            return;
-        }
-        order.setStatus(OrderStatus.CANCELED);
-    }
 }

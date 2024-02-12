@@ -1,11 +1,9 @@
 package org.betfair.logistics.service;
 
 import lombok.RequiredArgsConstructor;
-import org.betfair.logistics.dao.OrderStatus;
 import org.betfair.logistics.dao.converter.DestinationConverter;
 import org.betfair.logistics.dao.dto.DestinationDto;
 import org.betfair.logistics.dao.entity.Destination;
-import org.betfair.logistics.dao.entity.Order;
 import org.betfair.logistics.dao.repository.DestinationRepository;
 import org.betfair.logistics.dao.repository.OrderRepository;
 import org.betfair.logistics.exception.CannotCreateResourceException;
@@ -63,15 +61,9 @@ public class DestinationService {
                 .orElseThrow(() -> new ResourceNotFoundException("Destination not found for id=" + destinationId));
 
         orderRepository.findAllByDestination(destination)
-                .forEach(this::removeDestinationFromOrder);
+                .forEach(orderRepository::removeDestinationFromOrder);
 
         destinationRepository.deleteById(destinationId);
-    }
-
-    private void removeDestinationFromOrder(Order order) {
-        order.setDestination(null);
-        order.setStatus(OrderStatus.INVALID);
-        orderRepository.save(order);
     }
 
     private void validateDestinationDtoForCreate(DestinationDto destinationDto) throws CannotCreateResourceException {
