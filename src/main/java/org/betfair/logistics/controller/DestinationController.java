@@ -38,8 +38,8 @@ public class DestinationController {
     }
 
     @PutMapping
-    public void updateDestination(@RequestBody @Valid DestinationDto destinationDto) throws CannotCreateResourceException {
-        destinationService.updateDestination(destinationDto);
+    public DestinationDto updateDestination(@RequestBody @Valid DestinationDto destinationDto) throws CannotCreateResourceException {
+        return destinationService.updateDestination(destinationDto);
     }
 
 }
