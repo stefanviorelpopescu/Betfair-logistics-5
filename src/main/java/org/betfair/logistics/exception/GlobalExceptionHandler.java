@@ -13,9 +13,15 @@ import java.util.Map;
 @RestControllerAdvice
 public class GlobalExceptionHandler {
 
-    @ExceptionHandler({ResourceNotFoundException.class, CannotCreateResourceException.class})
+    @ExceptionHandler(ResourceNotFoundException.class)
+    @ResponseStatus(HttpStatus.NOT_FOUND)
+    public String handleResourceNotFoundException(ResourceNotFoundException exception) {
+        return exception.getMessage();
+    }
+
+    @ExceptionHandler(CannotCreateResourceException.class)
     @ResponseStatus(HttpStatus.BAD_REQUEST)
-    public String handleResourceNotFoundException(Exception exception) {
+    public String handleCannotCreateResourceException(CannotCreateResourceException exception) {
         return exception.getMessage();
     }
 
